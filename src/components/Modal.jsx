@@ -1,4 +1,9 @@
 export default function Modal(props) {
+	const addItem = () => {
+		props.setListOfItem([...props.listOfItem, "hola"]);
+		console.log(props.listOfItem.length);
+	};
+
 	return (
 		<>
 			<button type="button" className="add-item btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -22,7 +27,7 @@ export default function Modal(props) {
 							<button type="button" className="btn btn-danger" data-bs-dismiss="modal">
 								Cancelar
 							</button>
-							<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={props.addItem}>
+							<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addItem}>
 								Agregar
 							</button>
 						</div>
