@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Card() {
+export default function Card(props) {
 	const [count, setCount] = useState(0);
 	const sum = () => {
 		setCount(count + 1);
@@ -9,9 +9,10 @@ export default function Card() {
 		setCount(count - 1);
 	};
 	return (
-		<div className="card text-center mb-3" style={{ width: "12rem" }}>
-			<div className="card-body">
-				<h5 className="card-title">Atun</h5>
+		<div className="card text-center m-1" style={{ width: "12rem" }}>
+			<div className="card-body p-2">
+				<h5 className="card-title m-0">{props.art}</h5>
+				<p className="m-0">Despensa</p>
 				<div className="d-flex justify-content-between align-items-center text-center">
 					<button className="btn btn-secondary w-25" onClick={rest}>
 						-

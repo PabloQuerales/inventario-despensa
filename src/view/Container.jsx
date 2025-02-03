@@ -5,18 +5,20 @@ import Dropdown from "../components/Dropdown";
 import Modal from "../components/Modal";
 
 export default function Container() {
-	const [listOfItem, setListOfItem] = useState([1, 2, 3, 4, 5]);
-	const [showModal, setShowModal] = useState(false);
+	const [listOfItem, setListOfItem] = useState([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]);
+	const [art, setArt] = useState("");
 
 	return (
 		<div className="container mt-3">
 			<Dropdown />
-			{listOfItem.length > 0
-				? listOfItem.map(() => {
-						return <Card key={listOfItem.length} />;
-				  })
-				: "Hola Mundo"}
-			<Modal setListOfItem={setListOfItem} listOfItem={listOfItem} />
+			<div className="row justify-content-center">
+				{listOfItem.length > 0
+					? listOfItem.map(() => {
+							return <Card art={art} />;
+					  })
+					: "Hola Mundo"}
+			</div>
+			<Modal setListOfItem={setListOfItem} listOfItem={listOfItem} setArt={setArt} />
 		</div>
 	);
 }
