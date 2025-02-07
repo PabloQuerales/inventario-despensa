@@ -1,12 +1,25 @@
+import { useState } from "react";
+
 export default function Modal(props) {
+	const [inputValue, setInputValue] = useState({
+		articulo: "",
+		cant: 0,
+		type: ""
+	});
+
 	const addItem = () => {
-		props.setListOfItem([...props.listOfItem, "hola"]);
-		console.log(props.listOfItem.length);
+		props.setList([...props.list, inputValue]);
+		setInputValue({
+			articulo: "",
+			cant: 0,
+			type: ""
+		});
 	};
 	const handleChange = (e) => {
-		props.setArt(e.target.value);
-		console.log(e.target);
+		const { name, value } = e.target;
+		setInputValue({ ...inputValue, [name]: value });
 	};
+
 	return (
 		<>
 			<button type="button" className="add-item btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -23,16 +36,32 @@ export default function Modal(props) {
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div className="modal-body d-flex gap-5">
-							<input type="text" className="form-control" placeholder="Artículo" aria-label="Artículo" onChange={handleChange} />
-							<input type="text" className="form-control w-25" placeholder="Cant." aria-label="Cant." onChange={handleChange} />
+							<input
+								type="text"
+								className="form-control"
+								placeholder="Artículo"
+								value={inputValue.articulo}
+								aria-label="Artículo"
+								name="articulo"
+								onChange={handleChange}
+							/>
+							<input
+								type="text"
+								className="form-control w-25"
+								placeholder="Cant."
+								value={inputValue.cant}
+								aria-label="Cant."
+								name="cant"
+								onChange={handleChange}
+							/>
 						</div>
 						<div className="px-5 pb-3">
-							<select className="form-select mr-5 " aria-label="Default select example" onChange={handleChange}>
-								<option selected>Escoge una categoría</option>
-								<option value="1">Despensa</option>
-								<option value="2">Aseo</option>
-								<option value="3">Higiene</option>
-								<option value="4">Ocio</option>
+							<select className="form-select mr-5 " aria-label="Default select example" name="type" value={inputValue.type} onChange={handleChange}>
+								<option value="">Escoge una categoría</option>
+								<option value="Despensa">Despensa</option>
+								<option value="Aseo">Aseo</option>
+								<option value="Higiene">Higiene</option>
+								<option value="Ocio">Ocio</option>
 							</select>
 						</div>
 						<div className="modal-footer">

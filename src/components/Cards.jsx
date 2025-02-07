@@ -1,18 +1,22 @@
 import { useState } from "react";
 
 export default function Card(props) {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(props.cant);
 	const sum = () => {
-		setCount(count + 1);
+		if (count < 10) {
+			setCount(count + 1);
+		}
 	};
 	const rest = () => {
-		setCount(count - 1);
+		if (count > 0) {
+			setCount(count - 1);
+		}
 	};
 	return (
 		<div className="card text-center m-1" style={{ width: "12rem" }}>
 			<div className="card-body p-2">
-				<h5 className="card-title m-0">{props.art}</h5>
-				<p className="m-0">Despensa</p>
+				<h5 className="card-title m-0">{props.articulo}</h5>
+				<p className="m-0">{props.type}</p>
 				<div className="d-flex justify-content-between align-items-center text-center">
 					<button className="btn btn-secondary w-25" onClick={rest}>
 						-
