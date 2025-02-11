@@ -4,7 +4,8 @@ export default function Modal(props) {
 	const [inputValue, setInputValue] = useState({
 		articulo: "",
 		cant: 0,
-		type: ""
+		type: "",
+		id: ""
 	});
 
 	const addItem = () => {
@@ -12,7 +13,8 @@ export default function Modal(props) {
 		setInputValue({
 			articulo: "",
 			cant: 0,
-			type: ""
+			type: "",
+			id: ""
 		});
 	};
 	const handleChange = (e) => {
@@ -22,10 +24,9 @@ export default function Modal(props) {
 
 	return (
 		<>
-			<button type="button" className="add-item btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			<button type="button" className="add-item btn btn-secondary btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				<i className="bi bi-plus-lg"></i>
 			</button>
-
 			<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">

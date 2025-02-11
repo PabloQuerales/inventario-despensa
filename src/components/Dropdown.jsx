@@ -3,8 +3,8 @@ import "./Dropdown.css";
 export default function Dropdown() {
 	return (
 		<div className="dropdown">
-			<button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-				<i className="bi bi-funnel"></i>
+			<button className="btn btn-secondary dropdown-toggle btn-modal" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<i className="bi bi-funnel "></i>
 			</button>
 			<ul className="dropdown-menu">
 				<li>
