@@ -4,18 +4,22 @@ export default function Modal(props) {
 	const [inputValue, setInputValue] = useState({
 		articulo: "",
 		cant: 0,
-		type: "",
-		id: ""
+		type: ""
 	});
 
 	const addItem = () => {
-		props.setList([...props.list, inputValue]);
-		setInputValue({
-			articulo: "",
-			cant: 0,
-			type: "",
-			id: ""
-		});
+		if (inputValue.articulo != "" && inputValue.type != "" && inputValue.cant <= 10 && inputValue.cant >= 0) {
+			props.setList([...props.list, inputValue]);
+			setInputValue({
+				articulo: "",
+				cant: 0,
+				type: ""
+			});
+		} else {
+			alert(
+				"------------------------INFORMACIÓN INCOMPLETA-------------------- RECUERDA ESCRIBIR UN NOMBRE, ESCOGER UN TIPO E INTRODUCIR UNA CANTIDAD DE MAXIMO 10 UNIDADES"
+			);
+		}
 	};
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -44,6 +48,7 @@ export default function Modal(props) {
 								value={inputValue.articulo}
 								aria-label="Artículo"
 								name="articulo"
+								required
 								onChange={handleChange}
 							/>
 							<input
@@ -53,11 +58,18 @@ export default function Modal(props) {
 								value={inputValue.cant}
 								aria-label="Cant."
 								name="cant"
+								required
 								onChange={handleChange}
 							/>
 						</div>
 						<div className="px-5 pb-3">
-							<select className="form-select mr-5 " aria-label="Default select example" name="type" value={inputValue.type} onChange={handleChange}>
+							<select
+								className="form-select mr-5 "
+								aria-label="Default select example"
+								name="type"
+								required
+								value={inputValue.type}
+								onChange={handleChange}>
 								<option value="">Escoge una categoría</option>
 								<option value="Despensa">Despensa</option>
 								<option value="Aseo">Aseo</option>

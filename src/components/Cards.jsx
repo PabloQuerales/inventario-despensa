@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Card(props) {
-	const [count, setCount] = useState(props.cant);
+	const [count, setCount] = useState(parseInt(props.cant));
 	const sum = () => {
 		if (count < 10) {
 			setCount(count + 1);

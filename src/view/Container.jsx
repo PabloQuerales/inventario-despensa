@@ -6,7 +6,6 @@ import Modal from "../components/Modal";
 
 export default function Container() {
 	const [list, setList] = useState([]);
-	const [randomId] = useState(Math.floor(Math.random() * 9999));
 
 	return (
 		<div className="container d-flex flex-column justify-content-center">
@@ -14,7 +13,9 @@ export default function Container() {
 			<div className="row justify-content-center">
 				{list.length > 0 ? (
 					list.map((element) => {
-						return <Card articulo={element.articulo} cant={element.cant} setList={setList} type={element.type} key={randomId} />;
+						return (
+							<Card articulo={element.articulo} cant={element.cant} setList={setList} type={element.type} key={Math.floor(Math.random() * 9999)} />
+						);
 					})
 				) : (
 					<div className="d-flex emty text-center flex-column justify-content-center">
